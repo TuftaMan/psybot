@@ -21,7 +21,7 @@ async def main():
     await dp.start_polling(bot)
 
 
-async def startup():
+async def startup(dispatcher: Dispatcher):
     await init_models()
     logging.info('Bot started up...')
 
@@ -35,3 +35,4 @@ if __name__ == '__main__':
         asyncio.run(main())
     except KeyboardInterrupt:
         logging.info('Bot stopped')
+        os._exit(0) #убрать на деплое
