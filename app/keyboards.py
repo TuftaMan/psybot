@@ -26,7 +26,7 @@ start_test = InlineKeyboardMarkup(inline_keyboard=[
 
 after_test = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Записаться на консультацию', callback_data='consultation')],
-    [InlineKeyboardButton(text='Назад', callback_data='back_to_main')]
+    [InlineKeyboardButton(text='Главное меню', callback_data='back_to_main')]
 ])
 
 async def answer_kb():
@@ -38,3 +38,24 @@ async def answer_kb():
         [InlineKeyboardButton(text='Прервать тест', callback_data='back_to_main')],
     ])
 
+start_writing = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Записаться на консультацию', callback_data='writing_to_consultation')],
+    [InlineKeyboardButton(text='Главное меню', callback_data='back_to_main')]
+])
+
+complete_conslt = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Отправить', callback_data='send_info')],
+    [InlineKeyboardButton(text='Заполнить информацию заново', callback_data='writing_to_consultation')],
+    [InlineKeyboardButton(text='Главное меню', callback_data='back_to_main')]
+])
+
+after_reg = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='О психологе', callback_data='about')],
+    [InlineKeyboardButton(text='С какими запросами я работаю', callback_data='my_requests')],
+    [InlineKeyboardButton(text='Записаться на консультацию', callback_data='consultation')],
+    [InlineKeyboardButton(text='Подготовка к первой сессии', callback_data='first_session')],
+    [InlineKeyboardButton(text='Нужна ли мне помощь?', callback_data='test')],
+    [InlineKeyboardButton(text=' Частые вопросы', callback_data='questions')],
+    [InlineKeyboardButton(text='Связаться лично', callback_data='contacts')],
+    [InlineKeyboardButton(text='Стоимость моих услуг', callback_data='pricelist')],
+])
