@@ -251,7 +251,7 @@ async def cmd_get_question(message: Message, state: FSMContext, bot: Bot):
     load_dotenv()
 
     await bot.send_message(
-        chat_id=os.getenv("TG_CHAT_ID"),
+        chat_id=os.getenv("TG_CHAT_ID_RESERV"),
         text=(
             f"❓ Вопрос от пользователя\n\n"
             f"Имя: {first_name}\n"

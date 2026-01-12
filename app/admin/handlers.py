@@ -1,14 +1,17 @@
+import os
+from dotenv import load_dotenv
 from aiogram import Router, F, Bot
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery
 from aiogram.filters import Filter, Command
 
-from app.admin.states import Newletter
+from app.admin.states import Newletter, ChannelMessage
 import app.admin.keyboards as kb
 
 class Admin(Filter):
     async def __call__(self, message: Message):
-        return message.from_user.id in [407125211, 1018237453]
+        load_dotenv()
+        return message.from_user.id in [os.getenv('TG_CHAT_ID'), os.getenv('TG_CHAT_ID_RESERV')]
     
 admin = Router()
 
@@ -57,3 +60,19 @@ async def write_reset(callback: CallbackQuery, state: FSMContext, bot: Bot):
     await callback.answer('')
     await state.clear()
     await callback.message.answer('Задача очищена')
+
+
+#Команда для отправки сообщения в канал 
+@admin.message(Command('channel_message'))
+async def set_message_to_channel(message: Message, state: FSMContext):
+    await state.set_state(ChannelMessage.letter)
+    await message.answer('Введите сообщение для отправки в канал "Шаги к себе"')
+
+@admin.message(ChannelMessage.letter)
+async def send_message_to_channel(message: Message, bot: Bot, state: FSMContext):
+    load_dotenv()
+    await state.update_data(letter = message.text)
+    data = await state.get_data()
+    await bot.send_message(chat_id=os.getenv('TG_CHANNEL_NAME'), text=f"{data['letter']}")
+    await state.clear()
+    await message.answer('Сообщение отправлено в канал!')
