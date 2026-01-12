@@ -45,7 +45,7 @@ async def cmd_back_to_menu(callback: CallbackQuery, state: FSMContext):
 @client.callback_query(F.data=='about')
 async def cmd_about(callback: CallbackQuery):
     await callback.answer('')
-    await callback.message.edit_text("Меня зовут Елена Нефедьева, я практикующий психолог.\n\n"
+    await callback.message.edit_text("Меня зовут Елена Нефедьева, я практический психолог.\n\n"
     "В своей работе я создаю бережное и безопасное пространство, "
     "где можно честно говорить о чувствах, переживаниях и сложностях — "
     "без осуждения и давления.\n\n"
