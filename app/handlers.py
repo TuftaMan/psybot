@@ -178,19 +178,19 @@ async def cmd_writing_to_consultation(callback: CallbackQuery, state: FSMContext
 @client.message(Consultation.name)
 async def cmd_set_name(message: Message, state: FSMContext):
     await state.update_data(name=message.text)
-    await message.answer('Как с вами удобнее связаться? \n\nНапишите номер телефона или ник в Telegram.', parse_mode='Markdown')
+    await message.answer('Как с вами удобнее связаться? \n\nНапишите номер телефона или ник в Telegram.')
     await state.set_state(Consultation.contact)
 
 @client.message(Consultation.contact)
 async def cmd_set_name(message: Message, state: FSMContext):
     await state.update_data(contact=message.text)
-    await message.answer('Коротко опишите, что вас сейчас беспокоит.\n\nМожно без подробностей — ровно столько, сколько комфортно.', parse_mode='Markdown')
+    await message.answer('Коротко опишите, что вас сейчас беспокоит.\n\nМожно без подробностей — ровно столько, сколько комфортно.')
     await state.set_state(Consultation.request)
 
 @client.message(Consultation.request)
 async def cmd_set_name(message: Message, state: FSMContext):
     await state.update_data(request=message.text)
-    await message.answer('В какую дату и время (по МСК) вам было бы удобно провести консультацию?', parse_mode='Markdown')
+    await message.answer('В какую дату и время (по МСК) вам было бы удобно провести консультацию?')
     await state.set_state(Consultation.date)
 
 @client.message(Consultation.date)
@@ -203,7 +203,7 @@ async def cmd_set_name(message: Message, state: FSMContext):
     request = data.get("request")
     date = data.get("date")
 
-    await message.answer(f"Проверьте, пожалуйста, информацию 👇\n\nИмя: {name}\nКонтакт для связи: {contact}\nЗапрос: {request}\nДата: {date}\n\nЕсли всё верно — отправьте заявку.", reply_markup=kb.complete_conslt, parse_mode='Markdown')
+    await message.answer(f"Проверьте, пожалуйста, информацию 👇\n\nИмя: {name}\nКонтакт для связи: {contact}\nЗапрос: {request}\nДата: {date}\n\nЕсли всё верно — отправьте заявку.", reply_markup=kb.complete_conslt)
 
 @client.callback_query(F.data == 'send_info')
 async def cmd_send_info(callback: CallbackQuery, state: FSMContext, bot: Bot):
@@ -237,8 +237,7 @@ async def cmd_your_question(callback: CallbackQuery, state: FSMContext):
     "О формате работы, консультациях, "
     "сомнениях или том, что сейчас волнует.\n\n"
     "Напишите ваш вопрос в этом чате — "
-    "столько, сколько вам комфортно.", reply_markup=kb.back_to_main,
-                                     parse_mode='Markdown')
+    "столько, сколько вам комфортно.", reply_markup=kb.back_to_main)
     
 @client.message(Question.text)
 async def cmd_get_question(message: Message, state: FSMContext, bot: Bot):
