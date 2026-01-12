@@ -9,3 +9,7 @@ class Consultation(StatesGroup):
 
 class Test(StatesGroup):
     question = State()
+
+class Question(StatesGroup):
+    text = State()
+    
