@@ -10,8 +10,7 @@ import app.admin.keyboards as kb
 
 class Admin(Filter):
     async def __call__(self, message: Message):
-        load_dotenv()
-        return message.from_user.id in [os.getenv('TG_CHAT_ID'), os.getenv('TG_CHAT_ID_RESERV')]
+        return message.from_user.id in [int(os.getenv('TG_CHAT_ID')), int(os.getenv('TG_CHAT_ID_RESERV'))]
     
 admin = Router()
 

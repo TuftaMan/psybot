@@ -1,5 +1,4 @@
 import os
-from dotenv import load_dotenv
 from aiogram import Router, F, Bot
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, CallbackQuery
@@ -215,7 +214,6 @@ async def cmd_send_info(callback: CallbackQuery, state: FSMContext, bot: Bot):
     first_name = callback.from_user.first_name
     username = callback.from_user.username
     tg_id = callback.from_user.id
-    load_dotenv()
     await bot.send_message(chat_id=os.getenv('TG_CHAT_ID'), text=f'Заявка от @{username}, Имя - {first_name}, tg_id - {tg_id}\n\nЗаявка на консультацию:\n'
                                       f'Имя: {name}\n'
                                       f'Контакт для связи: {contact}\n'
@@ -245,11 +243,8 @@ async def cmd_get_question(message: Message, state: FSMContext, bot: Bot):
     first_name = message.from_user.first_name
     username = message.from_user.username
     tg_id = message.from_user.id
-
-    load_dotenv()
-
     await bot.send_message(
-        chat_id=os.getenv("TG_CHAT_ID_RESERV"),
+        chat_id=os.getenv("TG_CHAT_ID"),
         text=(
             f"❓ Вопрос от пользователя\n\n"
             f"Имя: {first_name}\n"
