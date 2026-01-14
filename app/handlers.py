@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 
 import app.keyboards as kb
 from app.states import Consultation, Test, Question
-from app.psy_test import QUESTIONS, get_result
+from app.psy_info import QUESTIONS, get_result, SLEEP_PRACTICE_TEXT, FOCUS_PRACTICE_TEXT, ART_PRACTICE_TEXT
 
 client = Router()
 
@@ -107,21 +107,20 @@ async def cmd_contacts(callback: CallbackQuery):
     await callback.answer('')
     await callback.message.edit_text("Связаться со мной можно здесь:\n\n"
     "Telegram: @Lenairk38\n"
+    "Telegram канал: @Steps_to_self\n"
     "VK: https://vk.com/id138880111\n\n"
     "Если удобнее — вы можете написать напрямую.", 
-                                     reply_markup=kb.back_to_main,
-                                     parse_mode='Markdown')
+                                     reply_markup=kb.back_to_main)
     
 @client.callback_query(F.data == 'pricelist')
 async def cmd_pricelist(callback: CallbackQuery):
     await callback.answer('')
     await callback.message.edit_text("Стоимость услуг:\n\n"
-    "— Первая консультация — Бесплатно\n"
-    "— Индивидуальная сессия — от 3500 рублей\n\n"
+    "Первая консультация — Бесплатно\n"
+    "Индивидуальная сессия — от 3500 рублей\n\n"
     "Если у вас есть вопросы по формату или оплате — "
     "вы можете задать их в личном сообщении.", 
-                                     reply_markup=kb.back_to_main,
-                                     parse_mode='Markdown')
+                                     reply_markup=kb.back_to_main)
 
 # Тестирование на психическое состояние
 @client.callback_query(F.data == 'start_test')
@@ -267,3 +266,64 @@ async def cmd_get_question(message: Message, state: FSMContext, bot: Bot):
         "Я постараюсь ответить вам в ближайшее время.",
         reply_markup=kb.after_reg
     )
+
+@client.callback_query(F.data == 'practic')
+async def cmd_test(callback: CallbackQuery):
+    await callback.answer('')
+    await callback.message.edit_text("Здесь собраны простые и бережные практики,"
+        'которые помогают немного замедлиться,'
+        'лучше почувствовать своё состояние'
+        'и дать себе паузу.\n\n'
+
+        'Это не терапия и не замена работе с психологом.'
+        'Если какая-то практика не откликается —'
+        ' её можно не делать или остановиться в любой момент.\n\n'
+
+        'Выберите то, что сейчас кажется наиболее подходящим.',
+                                    reply_markup=kb.practics)
+        
+@client.callback_query(F.data == 'practice_sleep')
+async def cmd_test(callback: CallbackQuery):
+    await callback.answer('')
+    await callback.message.edit_text(SLEEP_PRACTICE_TEXT,
+                                reply_markup=kb.practics_emoji,
+                                parse_mode='Markdown')
+    
+@client.callback_query(F.data == 'practice_focus')
+async def cmd_test(callback: CallbackQuery):
+    await callback.answer('')
+    await callback.message.edit_text(FOCUS_PRACTICE_TEXT,
+            reply_markup=kb.practics_emoji, 
+            parse_mode='Markdown')
+    
+@client.callback_query(F.data == 'practice_art')
+async def cmd_test(callback: CallbackQuery):
+    await callback.answer('')
+    await callback.message.edit_text(ART_PRACTICE_TEXT,
+            reply_markup=kb.practics_emoji, 
+            parse_mode='Markdown')
+    
+@client.callback_query(F.data == 'feeling_hard')
+async def cmd_test(callback: CallbackQuery):
+    await callback.answer('')
+    await callback.message.edit_text(
+    'Спасибо, что обратили на это внимание.\n'
+    'Если стало тяжелее, важно быть с этим не одному.\n'
+    'Вы можете обратиться за поддержкой.', 
+    reply_markup=kb.back_to_main)
+    
+@client.callback_query(F.data == 'feeling_neutral')
+async def cmd_test(callback: CallbackQuery):
+    await callback.answer('')
+    await callback.message.edit_text(
+    'Это нормально. Иногда эффект проявляется не сразу.\n'
+    'Вы можете попробовать другую практику или просто дать себе паузу.', 
+    reply_markup=kb.back_to_main)
+    
+@client.callback_query(F.data == 'feeling_ok')
+async def cmd_test(callback: CallbackQuery):
+    await callback.answer('')
+    await callback.message.edit_text(
+    'Рада, что практика дала немного пространства.\n'
+    'Если захочется — можно вернуться к ней позже.', 
+    reply_markup=kb.back_to_main)

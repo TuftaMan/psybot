@@ -36,4 +36,4 @@ if __name__ == '__main__':
         asyncio.run(main())
     except KeyboardInterrupt:
         logging.info('Bot stopped')
-        # os._exit(0) #убрать на деплое
+        os._exit(0) #убрать на деплое

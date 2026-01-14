@@ -5,10 +5,9 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 main = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='🧠 Обо мне', callback_data='about')],
     [InlineKeyboardButton(text='💬 С какими запросами я работаю', callback_data='my_requests')],
-    # [InlineKeyboardButton(text='🌿 Первая сессия', callback_data='first_session')],
     [InlineKeyboardButton(text='📝 Записаться на консультацию', callback_data='consultation')],
     [InlineKeyboardButton(text='📊 Пройти тест', callback_data='test')],
-    # [InlineKeyboardButton(text='❓ Частые вопросы', callback_data='questions')],
+    [InlineKeyboardButton(text='🧘🏼‍♀️ Практики', callback_data='practic')],
     [InlineKeyboardButton(text='💰 Стоимость', callback_data='pricelist')],
     [InlineKeyboardButton(text='📞 Контакты', callback_data='contacts')],
     [InlineKeyboardButton(text='💬 Задать свой вопрос', callback_data='your_question')]
@@ -53,10 +52,25 @@ complete_conslt = InlineKeyboardMarkup(inline_keyboard=[
 after_reg = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='🧠 Обо мне', callback_data='about')],
     [InlineKeyboardButton(text='💬 С какими запросами я работаю', callback_data='my_requests')],
-    [InlineKeyboardButton(text='🕯 Первая сессия', callback_data='first_session')],
     [InlineKeyboardButton(text='📝 Записаться на консультацию', callback_data='consultation')],
     [InlineKeyboardButton(text='📊 Пройти тест', callback_data='test')],
-    [InlineKeyboardButton(text='❓ Частые вопросы', callback_data='questions')],
+    [InlineKeyboardButton(text='🧘🏼‍♀️ Практики', callback_data='practic')],
     [InlineKeyboardButton(text='💰 Стоимость', callback_data='pricelist')],
-    [InlineKeyboardButton(text='📞 Контакты', callback_data='contacts')]
+    [InlineKeyboardButton(text='📞 Контакты', callback_data='contacts')],
+    [InlineKeyboardButton(text='💬 Задать свой вопрос', callback_data='your_question')]
 ])
+
+practics = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='🌙 Дыхание для сна', callback_data='practice_sleep')],
+    [InlineKeyboardButton(text='⚡ Дыхание для концентрации', callback_data='practice_focus')],
+    [InlineKeyboardButton(text='🎨 Арт-практика', callback_data='practice_art')],
+    [InlineKeyboardButton(text='⬅️ В главное меню', callback_data='back_to_main')]
+])
+
+practics_emoji = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="🙂 Стало спокойнее", callback_data="feeling_ok")],
+    [InlineKeyboardButton(text="😐 Без изменений", callback_data="feeling_neutral")],
+    [InlineKeyboardButton(text="😔 Стало сложнее", callback_data="feeling_hard")],
+    [InlineKeyboardButton(text='⬅️ В главное меню', callback_data='back_to_main')]
+])
+
