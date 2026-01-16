@@ -45,17 +45,17 @@ https://t.me/steps_to_self_bot
 ## 🖼 Примеры работы бота
 
 ### Главное меню
-![Главное меню](screenshots/main_menu.png)
+![Главное меню](https://github.com/user-attachments/assets/6b2242d6-0d70-4353-a890-1069414c7a60)
 
 ### Практики для самоподдержки
-![Практики](screenshots/practices.png)
-![Практика сон](screenshots/sleep_practice.png)
+![Практики](https://github.com/user-attachments/assets/8060a288-598e-4226-87c5-13f377e0b583)
+![Практика сон](https://github.com/user-attachments/assets/07c3591a-e225-4d8c-8bbf-fbb9a441c5b8)
 
 ### Скрининговый тест (PHQ-4)
-![Тест PHQ-4](screenshots/test.png)
+![Тест PHQ-4](https://github.com/user-attachments/assets/5b80653f-dc7f-429a-b723-0b99dfe1ba2d)
 
 ### Запись на консультацию
-![Запись на консультацию](screenshots/booking.png)
+![Запись на консультацию](https://github.com/user-attachments/assets/403d8df6-768d-42bb-98a4-bf90167bd8e3)
 
 ---
 
